@@ -16,7 +16,7 @@ class TicketForm(forms.ModelForm):
         max_length=100, widget=forms.Textarea(attrs={'class': 'form-control'}))
     assigned_to = forms.ModelChoiceField(
         queryset=User.objects.all(), empty_label='Select User', widget=forms.Select(attrs={'class': 'form-control'}))
-
+    urgent_status = forms.BooleanField(required=False)
     class Meta:
         model = Ticket
         exclude = ('user', 'ticket_id', 'created_date',
@@ -30,7 +30,8 @@ class TicketUpdateForm(forms.ModelForm):
         ('Hardware', 'Hardware'),
         ('Applications', 'Applications'),
         ('Infrastructure and Networking', 'Infrastructure and Networking'),
-        ('Database Administrator', 'Database Administrator')
+        ('Database Administrator', 'Database Administrator'),
+        ('Other', 'Other')
     )
 
     title = forms.CharField(max_length=50, widget=forms.TextInput(
@@ -45,6 +46,7 @@ class TicketUpdateForm(forms.ModelForm):
         max_length=100, widget=forms.Textarea(attrs={'class': 'form-control'}))
     ticket_section = forms.ChoiceField(
         choices=TICKET_SECTIONS, widget=forms.Select(attrs={'class': 'form-control'}))
+    
     assigned_to = forms.ModelChoiceField(
         queryset=User.objects.all(), empty_label='Select User', widget=forms.Select(attrs={'class': 'form-control'}))
 

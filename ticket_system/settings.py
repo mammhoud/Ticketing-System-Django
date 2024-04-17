@@ -39,6 +39,10 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'accounts',
     'ticketapp',
+    "import_export",
+
+    "simple_history",
+
 ]
 
 MIDDLEWARE = [
